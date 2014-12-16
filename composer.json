@@ -1,0 +1,19 @@
+{
+    "name": "storm/ajax-json-communicator",
+    "description": "Description of project ajax-json-communicator.",
+    "authors": [
+        {
+            "name": "bagf",
+            "email": "rory@eishgaming.co.za"
+        }
+    ],
+    "require": {
+        "illuminate/contracts": "dev-master",
+        "illuminate/support": "dev-master"
+    },
+    "autoload": {
+        "psr-4": {
+            "Storm\\Communicator\\": ""
+        }
+    }
+}
