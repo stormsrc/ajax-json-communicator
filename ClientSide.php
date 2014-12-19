@@ -52,14 +52,17 @@ EOT;
     
     public function content($content) {
         $this->responseArray['content'] = $content;
+        return $this;
     }
     
     public function data($key, $value) {
         $this->responseArray['data'][$key] = $value;
+        return $this;
     }
     
     public function redirect($url) {
         $this->responseArray['redirect'] = $url;
+        return $this;
     }
 
 
