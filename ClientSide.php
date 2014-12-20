@@ -29,7 +29,8 @@ class ClientSide {
         $this->responseArray = [
             'content'   => '',
             'data'      => [],
-            'redirect'  => null
+            'redirect'  => null,
+            'flash'     => []
         ];
     }
     
@@ -65,6 +66,10 @@ EOT;
         return $this;
     }
 
+    public function flash($key, $value) {
+        $this->responseArray['flash'][$key] = $value;
+        return $this;
+    }
 
     public function getResponseArray() {
         return $this->responseArray;
