@@ -39,16 +39,7 @@ class ClientSide {
      * @return string
      */
     public function getJavascript() {
-        return <<<EOT
-/**
- * Storm Ajax Json Communicator
- * Client-side code
- */
-var Comm_ServerSide = { busy: false, currentURL: null };
-Comm_ServerSide.form = function (form, url, data, callback) {};
-Comm_ServerSide.load = function (url, callback) {};
-Comm_ServerSide.hook = function (event, callback) {};
-EOT;
+        return file_get_contents(__DIR__ .'/resources/js/ajaxcommunicator.js');
     }
     
     public function content($content) {
