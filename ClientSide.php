@@ -29,7 +29,8 @@ class ClientSide {
         $this->responseArray = [
             'content'   => '',
             'data'      => [],
-            'redirect'  => null
+            'redirect'  => null,
+            'flash'     => []
         ];
     }
     
@@ -38,30 +39,28 @@ class ClientSide {
      * @return string
      */
     public function getJavascript() {
-        return <<<EOT
-/**
- * Storm Ajax Json Communicator
- * Client-side code
- */
-var Comm_ServerSide = { busy: false, currentURL: null };
-Comm_ServerSide.form = function (form, url, data, callback) {};
-Comm_ServerSide.load = function (url, callback) {};
-Comm_ServerSide.hook = function (event, callback) {};
-EOT;
+        return file_get_contents(__DIR__ .'/resources/js/ajaxcommunicator.js');
     }
     
     public function content($content) {
         $this->responseArray['content'] = $content;
+        return $this;
     }
     
     public function data($key, $value) {
         $this->responseArray['data'][$key] = $value;
+        return $this;
     }
     
     public function redirect($url) {
         $this->responseArray['redirect'] = $url;
+        return $this;
     }
 
+    public function flash($key, $value) {
+        $this->responseArray['flash'][$key] = $value;
+        return $this;
+    }
 
     public function getResponseArray() {
         return $this->responseArray;
