@@ -43,8 +43,14 @@ class AjaxJsonCommunicatorMiddleware implements Middleware {
         // The request method should be POST and should be accepting and JSON
         // response.
         if ($request->getMethod() === 'POST' && $request->wantsJson()) {
-            $data = ClientSide::get()->content($response->getContent())->getResponseArray();
             $status = $response->getStatusCode();
+            // Redirects
+            if ($status == 302) {
+                $url = $response->getTargetUrl();
+                ClientSide::get()->redirect($url);
+                $status = 200;
+            }
+            $data = ClientSide::get()->content($response->getContent())->getResponseArray();
             $jsonResponse = $this->responseFactory->json($data, $status);
             return $jsonResponse;
         }

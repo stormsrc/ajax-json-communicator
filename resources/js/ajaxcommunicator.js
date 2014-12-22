@@ -49,12 +49,21 @@ Comm_ServerSide.setBusy = function (busy) {
  */
 Comm_ServerSide.form = function (form, url, data, callback) {
     var ctx = this;
-    if (form !== null && typeof form === 'object') {
+    if (form !== null && typeof form !== 'object') {
         form = $('form[name=\''+form.replace('\'', '\\\'')+'\']');
     }
     if (url === undefined || url === null) {
         url = form.attr('action');
     }
+    if (data === null || data === undefined) {
+        data = {};
+    }
+    
+    var fields = form.serializeArray();
+    $.each(fields, function (ix, ob) {
+        data[ob.name] = ob.value;
+    });
+    
     this.ajax(
         url,
         data,
@@ -136,7 +145,7 @@ Comm_ServerSide.ajax = function (url, data, successCallback, errorCallback) {
     $.ajax({
         url: url,
         type: 'POST',
-        data: data,
+        data: JSON.stringify(data),
         contentType: 'application/json; charset=utf-8',
         dataType: 'json',
         context: ctx,
