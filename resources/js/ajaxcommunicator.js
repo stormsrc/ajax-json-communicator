@@ -7,6 +7,7 @@
 var Comm_ServerSide = {
     busy: false,
     currentURL: null,
+    staticData: {},
     history: (window.History.Adapter === undefined ?window.history:window.History),
     /* Define hook bind posts */
     hooks: {
@@ -140,7 +141,9 @@ Comm_ServerSide.ajax = function (url, data, successCallback, errorCallback) {
     this.setBusy(true);
     var ctx = this;
     if (data === undefined || data === null) {
-        data = {};
+        data = this.staticData;
+    } else {
+        data = $.extend({}, this.staticData, data);
     }
     $.ajax({
         url: url,
