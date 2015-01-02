@@ -132,7 +132,7 @@ Comm_ServerSide.findFlash = function (data) {
  * @returns undefined
  */
 Comm_ServerSide.findRedirect = function (data) {
-    if (data.redirect !== undefined && data.redirect.length > 0) {
+    if (data.redirect !== undefined && data.redirect !== null) {
         this.load(data.redirect);
     }
 };
