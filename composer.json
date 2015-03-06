@@ -8,8 +8,8 @@
         }
     ],
     "require": {
-        "illuminate/contracts": "dev-master",
-        "illuminate/support": "dev-master"
+        "illuminate/contracts": "5.1.*@dev",
+        "illuminate/support": "5.1.*@dev"
     },
     "autoload": {
         "psr-4": {
