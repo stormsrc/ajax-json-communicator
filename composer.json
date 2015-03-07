@@ -1,12 +1,14 @@
 {
     "name": "storm/ajax-json-communicator",
     "description": "Description of project ajax-json-communicator.",
+    "license": "GPL",
     "authors": [
         {
             "name": "bagf",
             "email": "rory@eishgaming.co.za"
         }
     ],
+    "minimum-stability": "dev",
     "require": {
         "illuminate/support": "~5.0",
         "illuminate/contracts": "~5.0"
